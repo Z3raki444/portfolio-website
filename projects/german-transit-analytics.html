@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e15">
+  <meta name="description" content="A reproducible batch ETL and analytics system for German long-distance rail schedules, built with Python, Apache Airflow, PostgreSQL, dbt and Streamlit.">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="German Transit Analytics | Praveenkumar Muthukumar">
+  <meta property="og:description" content="A reproducible batch ETL and analytics system for German long-distance rail schedules, built with Python, Apache Airflow, PostgreSQL, dbt and Streamlit.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../case-studies.css">
+  <title>German Transit Analytics — Praveenkumar Muthukumar</title>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="case-header">
+    <div class="container case-header-inner">
+      <a class="case-brand" href="../index.html" aria-label="Portfolio homepage"><span class="brand-square">P<span class="brand-mark">/</span>M</span><span>PRAVEEN.DEV</span></a>
+      <a class="case-back" href="../index.html#projects"><span aria-hidden="true">←</span> ALL PROJECTS</a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="case-hero container">
+      <p class="case-kicker">01 / FEATURED DATA ENGINEERING CASE STUDY</p>
+      <h1>From GTFS timetables to usable rail insights.</h1>
+      <p class="case-lede">A reproducible batch ETL and analytics system for German long-distance rail schedules, built with Python, Apache Airflow, PostgreSQL, dbt and Streamlit.</p>
+      <div class="case-tags" aria-label="Technologies"><span>Python</span><span>Airflow 3.3</span><span>PostgreSQL 17</span><span>dbt</span><span>Docker Compose</span><span>Streamlit</span></div>
+      <div class="case-cta"><a class="btn btn-primary" href="https://github.com/Z3raki444/german-transit-analytics" rel="noopener noreferrer" target="_blank">View source on GitHub <span aria-hidden="true">↗</span></a><a class="case-plain-link" href="../index.html#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+      <div class="case-facts"><div><strong>05</strong><span>GTFS tables</span></div><div><strong>03</strong><span>dbt analytics models</span></div><div><strong>MANUAL</strong><span>Airflow trigger</span></div></div>
+    </section>
+    <section class="case-section case-deep"><div class="container case-two-col">
+      <div><p class="case-number">01 / THE PROBLEM</p><h2>What needed <em>solving?</em></h2></div>
+      <p class="case-explainer">Raw GTFS schedule feeds describe stops, routes, journeys, stop times and service dates in separate datasets. The challenge is to make those relationships trustworthy and convenient for exploration without pretending that a static schedule is a live train feed.</p>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <div class="case-section-header"><p class="case-number">02 / DATA FLOW</p><h2>System <em>architecture.</em></h2><p>A simplified view of the actual project workflow. This diagram is illustrative, not a live system status display.</p></div>
+      <ol class="case-flow"><li><span>01</span><strong>GTFS static ZIP</strong></li><li><span>02</span><strong>Python extract + clean</strong></li><li><span>03</span><strong>PostgreSQL</strong></li><li><span>04</span><strong>Quality checks + dbt</strong></li><li><span>05</span><strong>Streamlit dashboard</strong></li></ol>
+    </div></section>
+    <section class="case-section case-deep"><div class="container">
+      <div class="case-section-header"><p class="case-number">03 / IMPLEMENTATION</p><h2>What I <em>built.</em></h2></div>
+      <div class="case-build"><article><span class="case-step">01</span><h3>Ingestion and transformation</h3><p>Download and parse a long-distance rail GTFS ZIP, clean stop-time and service-date records, and load five related tables: stops, routes, trips, stop_times and service_dates.</p></article><article><span class="case-step">02</span><h3>Checks before analytics</h3><p>Compare source and database row counts, inspect references and validate expected structure before building analytics models. Offline tests and CI cover part of the pipeline.</p></article><article><span class="case-step">03</span><h3>Models people can explore</h3><p>Create dbt views for daily station departures, hourly departure patterns and train-service summaries. Streamlit and Plotly expose station rankings, charts and an interactive station map.</p></article></div>
+    </div></section>
+    <section class="case-section"><div class="container case-two-col">
+      <div><p class="case-number">04 / ENGINEERING TRADE-OFFS</p><h2>Scope and <em>limitations.</em></h2></div>
+      <p class="case-explainer">The system distinguishes scheduled departures from actual events. The data source is a static feed, the DAG is manually triggered, and the dashboard isn't a real-time tracker or a delay-prediction application.</p>
+    </div></section>
+    <section class="case-section case-deep"><div class="container case-two-col">
+      <div><p class="case-number">05 / WHAT'S NEXT</p><h2>Where I'd <em>take it.</em></h2></div>
+      <ul class="case-roadmap"><li>Improve snapshot-refresh and historical change handling</li><li>Add broader integration tests for the full container stack</li><li>Deploy a sanitized hosted demo with sample schedule data</li></ul>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <div class="case-section-header"><p class="case-number">06 / REVIEW THE CODE</p><h2>Go straight <em>to the implementation.</em></h2></div>
+      <div class="case-code-links"><a href="https://github.com/Z3raki444/german-transit-analytics/tree/main/airflow/dags/german_transit_etl.py" target="_blank" rel="noopener noreferrer"><span>Airflow DAG</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/german-transit-analytics/tree/main/src/quality/check_gtfs_quality.py" target="_blank" rel="noopener noreferrer"><span>Quality checks</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/german-transit-analytics/tree/main/dbt/models/" target="_blank" rel="noopener noreferrer"><span>dbt models</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/german-transit-analytics/tree/main/dashboard/app.py" target="_blank" rel="noopener noreferrer"><span>Dashboard source</span><span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="case-end container"><p>GOT A ROLE OR PROJECT IN MIND?</p><h2>Let's make useful things.</h2><a class="btn btn-primary" href="mailto:praveenkumarm424@gmail.com?subject=Hello%20Praveenkumar">Contact me <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="footer-brand" href="../index.html">P<span>/</span>M<span class="footer-period">.</span></a><p>© <span class="case-year">2026</span> Praveenkumar Muthukumar</p><div class="footer-links"><a href="../index.html#projects">ALL PROJECTS</a><a href="https://github.com/Z3raki444" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/praveenkumar-muthukumar-4baa9a3a9/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></div></div></footer>
+  <script>document.querySelectorAll('.case-year').forEach(el=>el.textContent=new Date().getFullYear())</script>
+</body>
+</html>
