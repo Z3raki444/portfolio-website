@@ -1,30 +1,64 @@
 # Praveenkumar Muthukumar — Portfolio Website
 
-A responsive data engineering and software development portfolio. No framework or build step required.
+A fast, responsive, static portfolio focused on **data engineering and software development**. Built with HTML, CSS and plain JavaScript, so it deploys to GitHub Pages without a build step or paid hosting.
 
-## Preview
+## Browse
 
-Open `index.html` directly, or run `python -m http.server 8000` from the project folder.
+- **Homepage:** selected work, bio, education, certifications, skills and contacts
+- **German Transit Analytics case study:** [projects/german-transit-analytics.html](projects/german-transit-analytics.html)
+- **Weather Data Pipeline case study:** [projects/weather-data-pipeline.html](projects/weather-data-pipeline.html)
 
-## Included
+The two case studies show architecture, problem statements, documented implementation, engineering constraints and links into the actual project source. Other portfolio project cards link directly to their repositories.
 
-- Eight GitHub-linked projects (data engineering, analytics, ML and web development).
-- Profile photo extracted from the CV provided by the portfolio owner.
-- Public-facing education, certifications, technical skills and languages.
-- Requested German and Indian phone numbers, plus email, GitHub and LinkedIn.
-- Interactive project filters, responsive mobile navigation and architecture graphics.
+## Preview locally
 
-## Free hosting with GitHub Pages
+Open `index.html` in your browser. For an HTTP preview, from the repository root:
 
-1. Create a public repository named `portfolio` under `Z3raki444`.
-2. Upload the **contents** of this folder to the repository root.
-3. In Settings → Pages, choose **Deploy from a branch** / `main` / `/(root)`.
-4. The expected URL is `https://Z3raki444.github.io/portfolio/` after GitHub publishes it.
+```bash
+python -m http.server 8000
+```
 
-## Before publishing
+Then visit `http://localhost:8000`.
 
-Both phone numbers and the email address are publicly displayed on the website as the owner requested. **There is no downloadable CV or resume in this version**; it will be added later only when the owner supplies and approves the final resume. The source CV/Profile PDFs are intentionally **not** included. This website has not been deployed by this package.
+## Validation
 
-## Sources
+Only Node.js is needed for checks, and there are **no npm dependencies**:
 
-Information comes from `Profile.pdf` (LinkedIn export), `Praveenkumar_M_CV.pdf`, owner-confirmed phone numbers, and connected GitHub repository READMEs retrieved on October 29, 2026. Descriptions are limited to what the projects document. The architecture art is illustrative, not a live feed.
+```bash
+node --check script.js
+node --test scripts/check-site.mjs
+```
+
+Checks cover page structure, local links, case-study destinations, contact links and previously requested public-content restrictions. GitHub Actions runs the same checks on pull requests and pushes to `main`.
+
+## Publish free with GitHub Pages
+
+This repository is **`Z3raki444/portfolio-website`**.
+
+1. Open repository **Settings → Pages**.
+2. Under **Build and deployment**, select **Deploy from a branch**.
+3. Choose **`main`** and **`/(root)`**, then save.
+4. Once GitHub finishes publishing, the standard project-site URL is:
+   **https://z3raki444.github.io/portfolio-website/**
+
+The URL depends on Pages being enabled and the deployment succeeding. No custom domain or build pipeline is required.
+
+## Maintenance
+
+- Edit `index.html` for homepage text or project cards.
+- Edit the two `projects/*.html` files for detailed case studies.
+- Edit `styles.css` or `case-studies.css` for visual styling.
+- Edit `script.js` for project filters and mobile navigation.
+- Keep project descriptions accurate to their linked repository READMEs.
+
+## Privacy and publication notes
+
+- The German and Indian phone numbers, public email address, GitHub and LinkedIn are displayed intentionally at the owner's request.
+- No CV or downloadable resume is included yet.
+- Academic grades, date of birth, and home address are not displayed.
+- The architecture diagrams represent implemented workflows but are **not live feeds**.
+- A few project demonstrations are local, not hosted production apps. Case studies identify those limitations.
+
+## Attribution
+
+Project summaries were prepared from the corresponding GitHub repositories. Personal education and certifications were reviewed against the portfolio owner's CV and LinkedIn-export PDF. The supplied photo is retained as `assets/praveenkumar-portrait.webp`.

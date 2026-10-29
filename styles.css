@@ -69,3 +69,15 @@
 .contact-bottom{margin-top:47px}
 @media(max-width:900px){.contact-numbers{grid-template-columns:1fr 1fr}.contact-numbers a:last-child{grid-column:1/-1}}
 @media(max-width:570px){.certs-grid,.contact-numbers{grid-template-columns:1fr}.contact-numbers a:last-child{grid-column:auto}.certificates-panel{padding:20px}.profile-photo-card img{width:76px;height:76px}.profile-photo-card strong{font-size:14px}.profile-photo-card{gap:12px}}
+
+
+/* Portfolio enhancement: case study links and accessible filter feedback. */
+.project-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 26px;margin-top:21px}
+.project-actions .project-link{white-space:normal}
+.project-actions .project-link+ .project-link{color:#cbd7d8}
+.project-actions .project-link+ .project-link:hover{color:var(--accent)}
+.filter-status{font:500 11px var(--font-mono);letter-spacing:.35px;color:#a8b9c7;margin:0 0 21px;min-height:17px}
+@media(max-width:460px){
+  .project-actions{gap:13px 16px}
+  .project-actions .project-link{font-size:10px}
+}

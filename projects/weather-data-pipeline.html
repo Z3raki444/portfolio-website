@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e15">
+  <meta name="description" content="An hourly Open-Meteo ingestion workflow for five German cities, with Pandas transformations, PostgreSQL upserts and Apache Airflow orchestration.">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Weather Data Pipeline | Praveenkumar Muthukumar">
+  <meta property="og:description" content="An hourly Open-Meteo ingestion workflow for five German cities, with Pandas transformations, PostgreSQL upserts and Apache Airflow orchestration.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../case-studies.css">
+  <title>Weather Data Pipeline — Praveenkumar Muthukumar</title>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="case-header">
+    <div class="container case-header-inner">
+      <a class="case-brand" href="../index.html" aria-label="Portfolio homepage"><span class="brand-square">P<span class="brand-mark">/</span>M</span><span>PRAVEEN.DEV</span></a>
+      <a class="case-back" href="../index.html#projects"><span aria-hidden="true">←</span> ALL PROJECTS</a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="case-hero container">
+      <p class="case-kicker">02 / DATA ENGINEERING CASE STUDY</p>
+      <h1>A weather API feed with repeatable hourly ETL.</h1>
+      <p class="case-lede">An hourly Open-Meteo ingestion workflow for five German cities, with Pandas transformations, PostgreSQL upserts and Apache Airflow orchestration.</p>
+      <div class="case-tags" aria-label="Technologies"><span>Python</span><span>Pandas</span><span>Open-Meteo API</span><span>PostgreSQL</span><span>Apache Airflow</span><span>Docker</span></div>
+      <div class="case-cta"><a class="btn btn-primary" href="https://github.com/Z3raki444/weather-data-pipeline" rel="noopener noreferrer" target="_blank">View source on GitHub <span aria-hidden="true">↗</span></a><a class="case-plain-link" href="../index.html#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+      <div class="case-facts"><div><strong>05</strong><span>German cities</span></div><div><strong>HOURLY</strong><span>DAG schedule</span></div><div><strong>UPSERT</strong><span>Duplicate protection</span></div></div>
+    </section>
+    <section class="case-section case-deep"><div class="container case-two-col">
+      <div><p class="case-number">01 / THE PROBLEM</p><h2>What needed <em>solving?</em></h2></div>
+      <p class="case-explainer">An API returns useful measurements, but an analytics database needs consistent types, valid values and safe re-runs. This pipeline turns a live weather response into structured observations without inserting duplicate city/timestamp records.</p>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <div class="case-section-header"><p class="case-number">02 / DATA FLOW</p><h2>System <em>architecture.</em></h2><p>A simplified view of the actual project workflow. This diagram is illustrative, not a live system status display.</p></div>
+      <ol class="case-flow"><li><span>01</span><strong>Open-Meteo API</strong></li><li><span>02</span><strong>Python extract</strong></li><li><span>03</span><strong>Pandas validate</strong></li><li><span>04</span><strong>PostgreSQL upsert</strong></li><li><span>05</span><strong>Hourly Airflow DAG</strong></li></ol>
+    </div></section>
+    <section class="case-section case-deep"><div class="container">
+      <div class="case-section-header"><p class="case-number">03 / IMPLEMENTATION</p><h2>What I <em>built.</em></h2></div>
+      <div class="case-build"><article><span class="case-step">01</span><h3>Collect observations</h3><p>Request temperature, humidity, precipitation, wind speed, weather code and observation timestamps for Berlin, Hamburg, Munich, Frankfurt and Cologne.</p></article><article><span class="case-step">02</span><h3>Validate and transform</h3><p>Convert timestamps and numeric values, reject missing required fields, check humidity and non-negative measurements, and filter duplicate city/timestamp observations.</p></article><article><span class="case-step">03</span><h3>Load safely and schedule</h3><p>Load into PostgreSQL with an ON CONFLICT upsert keyed by city and observation time. Run the extract → transform → load DAG hourly with Airflow.</p></article></div>
+    </div></section>
+    <section class="case-section"><div class="container case-two-col">
+      <div><p class="case-number">04 / ENGINEERING TRADE-OFFS</p><h2>Scope and <em>limitations.</em></h2></div>
+      <p class="case-explainer">An idempotent load is useful when a scheduled job retries. The repository describes a local Docker-based demonstration; offline CI checks transformations and does not verify a fully deployed production environment.</p>
+    </div></section>
+    <section class="case-section case-deep"><div class="container case-two-col">
+      <div><p class="case-number">05 / WHAT'S NEXT</p><h2>Where I'd <em>take it.</em></h2></div>
+      <ul class="case-roadmap"><li>Add monitoring and alerting for failed or stale observations</li><li>Add integration tests against a real ephemeral PostgreSQL instance</li><li>Create a small trend dashboard with measurement history</li></ul>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <div class="case-section-header"><p class="case-number">06 / REVIEW THE CODE</p><h2>Go straight <em>to the implementation.</em></h2></div>
+      <div class="case-code-links"><a href="https://github.com/Z3raki444/weather-data-pipeline/tree/main/src/extract.py" target="_blank" rel="noopener noreferrer"><span>Extraction</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/weather-data-pipeline/tree/main/src/transform.py" target="_blank" rel="noopener noreferrer"><span>Transformations</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/weather-data-pipeline/tree/main/src/load.py" target="_blank" rel="noopener noreferrer"><span>Database loader</span><span aria-hidden="true">↗</span></a><a href="https://github.com/Z3raki444/weather-data-pipeline/tree/main/dags/weather_pipeline_dag.py" target="_blank" rel="noopener noreferrer"><span>Airflow DAG</span><span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="case-end container"><p>GOT A ROLE OR PROJECT IN MIND?</p><h2>Let's make useful things.</h2><a class="btn btn-primary" href="mailto:praveenkumarm424@gmail.com?subject=Hello%20Praveenkumar">Contact me <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="footer-brand" href="../index.html">P<span>/</span>M<span class="footer-period">.</span></a><p>© <span class="case-year">2026</span> Praveenkumar Muthukumar</p><div class="footer-links"><a href="../index.html#projects">ALL PROJECTS</a><a href="https://github.com/Z3raki444" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/praveenkumar-muthukumar-4baa9a3a9/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></div></div></footer>
+  <script>document.querySelectorAll('.case-year').forEach(el=>el.textContent=new Date().getFullYear())</script>
+</body>
+</html>
